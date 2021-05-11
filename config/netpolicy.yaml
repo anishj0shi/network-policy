@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ingress-pol
+  namespace: host-ns
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: i1
+          namespaceSelector:
+            matchLabels:
+              app: ni1
+  podSelector:
+    matchLabels:
+      app: sample
+  policyTypes:
+    - Ingress
+    - Egress
+
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: egress-pol
+  namespace: host-ns
+spec:
+  podSelector: {}
+  egress:
+    - {}
+  policyTypes:
+    - Egress

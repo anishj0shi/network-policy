@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: host-ns
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: invoker-ns
+  labels:
+    app: ni1
